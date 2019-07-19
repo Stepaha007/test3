@@ -5,27 +5,27 @@ bodyParser = require('body-parser'),
 path = require('path');
 var app = express()  
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/static')));
 app.set('view engine', 'ejs');
-//app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, '/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.get('/', (req, res)=>{
-  res.render('/views/index.ejs')
+  res.render('index.ejs')
 })
 
 app.get('/info', (req, res)=>{
-  res.render('/views/info.ejs')
+  res.render('info.ejs')
 })
 
 app.get('/tos', (req, res)=>{
-  res.render('/views/tos.ejs')
+  res.render('tos.ejs')
 })
 
 app.get('*', (req, res)=>{
-  res.render('/views/404.ejs')
+  res.render('404.ejs')
 })
 
 app.listen(3000, "127.0.0.1");
